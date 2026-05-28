@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Toolkit Pro - All PDF Tools in One Place</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="logo">PDF Toolkit Pro</div>
+            <div class="nav-links">
+                <a href="#home" onclick="scrollToSection('home')">Home</a>
+                <a href="#tools" onclick="scrollToSection('tools')" class="active">Tools</a>
+                <a href="#pricing" onclick="scrollToSection('pricing')">Pricing</a>
+                <a href="#about" onclick="scrollToSection('about')">About</a>
+            </div>
+            <div class="nav-buttons">
+                <button class="btn btn-outline">Log In</button>
+                <button class="btn btn-primary">Sign Up Free</button>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div class="hero-badge">100% Free Tools Available</div>
+            <h1>All The PDF Tools<br><span>You Need, In One Place</span></h1>
+            <p>Merge, split, compress, rotate, resize, protect and convert PDFs. No signup required, no watermarks, no limits.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <button class="btn btn-primary" onclick="scrollToSection('tools')">
+                    Explore Free Tools
+                </button>
+                <button class="btn btn-pro" onclick="scrollToSection('pricing')">
+                    Upgrade to Pro
+                </button>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">12</div>
+                <div class="stat-label">PDF Tools</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">100%</div>
+                <div class="stat-label">Free Tools</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">50MB</div>
+                <div class="stat-label">Max File Size</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Watermarks</div>
+            </div>
+        </div>
+
+        <!-- Tools Section -->
+        <section id="tools">
+            <div class="section-header">
+                <h2>PDF Tools</h2>
+                <p>Click on any tool to start using it instantly</p>
+            </div>
+
+            <div class="tools-grid">
+                <!-- FREE Tools -->
+                <div class="tool-card" data-tool="merge">
+                    <span class="badge-free">FREE</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128230;</div>
+                        <h3>PDF Merger</h3>
+                    </div>
+                    <p>Combine multiple PDF files into one document. Drag and drop to merge.</p>
+                </div>
+
+                <div class="tool-card" data-tool="split">
+                    <span class="badge-free">FREE</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#9986;</div>
+                        <h3>PDF Splitter</h3>
+                    </div>
+                    <p>Extract specific pages or split a PDF into multiple files.</p>
+                </div>
+
+                <div class="tool-card" data-tool="extract-pages">
+                    <span class="badge-free">FREE</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128462;</div>
+                        <h3>Extract Pages</h3>
+                    </div>
+                    <p>Select specific pages to extract and save as a new PDF.</p>
+                </div>
+
+                <div class="tool-card" data-tool="remove-pages">
+                    <span class="badge-free">FREE</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128465;</div>
+                        <h3>Remove Pages</h3>
+                    </div>
+                    <p>Delete unwanted pages from your PDF document.</p>
+                </div>
+
+                <div class="tool-card" data-tool="rotate">
+                    <span class="badge-free">FREE</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128257;</div>
+                        <h3>PDF Rotator</h3>
+                    </div>
+                    <p>Rotate PDF pages by 90, 180, or 270 degrees.</p>
+                </div>
+
+                <div class="tool-card" data-tool="resize">
+                    <span class="badge-free">FREE</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128396;</div>
+                        <h3>PDF Resize</h3>
+                    </div>
+                    <p>Change PDF page size to A4, Letter, Legal, and more.</p>
+                </div>
+
+                <div class="tool-card" data-tool="compress">
+                    <span class="badge-free">FREE</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128230;</div>
+                        <h3>PDF Compressor</h3>
+                    </div>
+                    <p>Reduce PDF file size while maintaining quality.</p>
+                </div>
+
+                <div class="tool-card" data-tool="info">
+                    <span class="badge-free">FREE</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128209;</div>
+                        <h3>PDF Info</h3>
+                    </div>
+                    <p>View PDF details, page count, file size, and metadata.</p>
+                </div>
+
+                <!-- PRO Tools -->
+                <div class="tool-card" data-tool="protect">
+                    <span class="badge-pro">PRO</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128274;</div>
+                        <h3>PDF Protector</h3>
+                    </div>
+                    <p>Add password protection to your PDF files.</p>
+                </div>
+
+                <div class="tool-card" data-tool="unlock">
+                    <span class="badge-pro">PRO</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128275;</div>
+                        <h3>PDF Unlocker</h3>
+                    </div>
+                    <p>Remove password from protected PDFs.</p>
+                </div>
+
+                <div class="tool-card" data-tool="image">
+                    <span class="badge-pro">PRO</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128444;</div>
+                        <h3>Image to PDF</h3>
+                    </div>
+                    <p>Convert JPG, PNG, or other images to PDF format.</p>
+                </div>
+
+                <div class="tool-card" data-tool="extract">
+                    <span class="badge-pro">PRO</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128221;</div>
+                        <h3>Text Extractor</h3>
+                    </div>
+                    <p>Extract text content from PDF files.</p>
+                </div>
+            </div>
+
+            <!-- Tool Panels -->
+
+            <!-- Merge Panel -->
+            <div class="tool-panel" id="merge-panel">
+                <div class="panel-header">
+                    <h2>PDF Merger <span class="badge-free" style="position:static;margin-left:10px;">FREE</span></h2>
+                    <button class="close-btn" onclick="closePanel('merge')">&times;</button>
+                </div>
+                <div class="upload-area" data-tool="merge">
+                    <input type="file" id="merge-files" accept=".pdf" multiple>
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Drop PDF files here or <span>browse files</span></p>
+                    <p class="upload-formats">Select 2 or more PDF files to merge</p>
+                </div>
+                <div class="file-list"></div>
+                <button class="btn btn-primary submit-btn" disabled onclick="processTool('merge')">
+                    &#10003; Merge PDFs
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Split Panel -->
+            <div class="tool-panel" id="split-panel">
+                <div class="panel-header">
+                    <h2>PDF Splitter <span class="badge-free" style="position:static;margin-left:10px;">FREE</span></h2>
+                    <button class="close-btn" onclick="closePanel('split')">&times;</button>
+                </div>
+                <div class="upload-area" data-tool="split">
+                    <input type="file" id="split-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to split</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <div class="options-row">
+                    <div class="option-group">
+                        <label>Start Page</label>
+                        <input type="number" id="split-start" value="1" min="1">
+                    </div>
+                    <div class="option-group">
+                        <label>End Page</label>
+                        <input type="number" id="split-end" value="2" min="1">
+                    </div>
+                </div>
+                <button class="btn btn-primary submit-btn" disabled onclick="processTool('split')">
+                    &#10003; Split PDF
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Extract Pages Panel -->
+            <div class="tool-panel" id="extract-pages-panel">
+                <div class="panel-header">
+                    <h2>Extract Pages <span class="badge-free" style="position:static;margin-left:10px;">FREE</span></h2>
+                    <button class="close-btn" onclick="closePanel('extract-pages')">&times;</button>
+                </div>
+                <div class="upload-area" data-tool="extract-pages">
+                    <input type="file" id="extract-pages-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to extract pages from</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <div class="options-row">
+                    <div class="option-group" style="flex: 2;">
+                        <label>Pages to Extract (e.g., 1,3,5 or 1-5)</label>
+                        <input type="text" id="extract-pages-list" placeholder="e.g., 1,3,5 or 1-5">
+                    </div>
+                </div>
+                <button class="btn btn-primary submit-btn" disabled onclick="processTool('extract-pages')">
+                    &#10003; Extract Pages
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Remove Pages Panel -->
+            <div class="tool-panel" id="remove-pages-panel">
+                <div class="panel-header">
+                    <h2>Remove Pages <span class="badge-free" style="position:static;margin-left:10px;">FREE</span></h2>
+                    <button class="close-btn" onclick="closePanel('remove-pages')">&times;</button>
+                </div>
+                <div class="upload-area" data-tool="remove-pages">
+                    <input type="file" id="remove-pages-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to remove pages from</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <div class="options-row">
+                    <div class="option-group" style="flex: 2;">
+                        <label>Pages to Remove (e.g., 2,4,6)</label>
+                        <input type="text" id="remove-pages-list" placeholder="e.g., 2,4,6">
+                    </div>
+                </div>
+                <button class="btn btn-primary submit-btn" disabled onclick="processTool('remove-pages')">
+                    &#10003; Remove Pages
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Rotate Panel -->
+            <div class="tool-panel" id="rotate-panel">
+                <div class="panel-header">
+                    <h2>PDF Rotator <span class="badge-free" style="position:static;margin-left:10px;">FREE</span></h2>
+                    <button class="close-btn" onclick="closePanel('rotate')">&times;</button>
+                </div>
+                <div class="upload-area" data-tool="rotate">
+                    <input type="file" id="rotate-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to rotate</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <div class="options-row">
+                    <div class="option-group">
+                        <label>Rotation Angle</label>
+                        <select id="rotate-angle">
+                            <option value="90">90° Clockwise</option>
+                            <option value="180">180° Upside Down</option>
+                            <option value="270">270° Counter-clockwise</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary submit-btn" disabled onclick="processTool('rotate')">
+                    &#10003; Rotate PDF
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Resize Panel -->
+            <div class="tool-panel" id="resize-panel">
+                <div class="panel-header">
+                    <h2>PDF Resize <span class="badge-free" style="position:static;margin-left:10px;">FREE</span></h2>
+                    <button class="close-btn" onclick="closePanel('resize')">&times;</button>
+                </div>
+                <div class="upload-area" data-tool="resize">
+                    <input type="file" id="resize-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to resize</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <div class="options-row">
+                    <div class="option-group">
+                        <label>Page Size</label>
+                        <select id="resize-size">
+                            <option value="A4">A4 (210 x 297 mm)</option>
+                            <option value="Letter">Letter (8.5 x 11 in)</option>
+                            <option value="Legal">Legal (8.5 x 14 in)</option>
+                            <option value="Tabloid">Tabloid (11 x 17 in)</option>
+                        </select>
+                    </div>
+                    <div class="option-group">
+                        <label>Orientation</label>
+                        <select id="resize-orientation">
+                            <option value="portrait">Portrait</option>
+                            <option value="landscape">Landscape</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn btn-primary submit-btn" disabled onclick="processTool('resize')">
+                    &#10003; Resize PDF
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Compress Panel -->
+            <div class="tool-panel" id="compress-panel">
+                <div class="panel-header">
+                    <h2>PDF Compressor <span class="badge-free" style="position:static;margin-left:10px;">FREE</span></h2>
+                    <button class="close-btn" onclick="closePanel('compress')">&times;</button>
+                </div>
+                <div class="upload-area" data-tool="compress">
+                    <input type="file" id="compress-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to compress</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <button class="btn btn-primary submit-btn" disabled onclick="processTool('compress')">
+                    &#10003; Compress PDF
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Info Panel -->
+            <div class="tool-panel" id="info-panel">
+                <div class="panel-header">
+                    <h2>PDF Info <span class="badge-free" style="position:static;margin-left:10px;">FREE</span></h2>
+                    <button class="close-btn" onclick="closePanel('info')">&times;</button>
+                </div>
+                <div class="upload-area" data-tool="info">
+                    <input type="file" id="info-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to view info</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <button class="btn btn-primary submit-btn" disabled onclick="processTool('info')">
+                    &#128269; Get PDF Info
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Protect Panel (PRO) -->
+            <div class="tool-panel" id="protect-panel">
+                <div class="panel-header">
+                    <h2>PDF Protector <span class="badge-pro" style="position:static;margin-left:10px;">PRO</span></h2>
+                    <button class="close-btn" onclick="closePanel('protect')">&times;</button>
+                </div>
+                <div class="pro-notice">
+                    <div class="icon">&#128274;</div>
+                    <div>
+                        <h4>Pro Feature</h4>
+                        <p>Upgrade to Pro to unlock password protection for your PDFs</p>
+                    </div>
+                    <button class="btn btn-pro btn-sm" onclick="scrollToSection('pricing')">Upgrade Now</button>
+                </div>
+                <div class="upload-area" data-tool="protect">
+                    <input type="file" id="protect-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to protect</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <div class="options-row">
+                    <div class="option-group">
+                        <label>Password</label>
+                        <input type="password" id="protect-password" placeholder="Enter password">
+                    </div>
+                    <div class="option-group">
+                        <label>Confirm Password</label>
+                        <input type="password" id="protect-confirm" placeholder="Confirm password">
+                    </div>
+                </div>
+                <button class="btn btn-pro submit-btn" disabled onclick="processTool('protect')">
+                    &#10003; Protect PDF
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Unlock Panel (PRO) -->
+            <div class="tool-panel" id="unlock-panel">
+                <div class="panel-header">
+                    <h2>PDF Unlocker <span class="badge-pro" style="position:static;margin-left:10px;">PRO</span></h2>
+                    <button class="close-btn" onclick="closePanel('unlock')">&times;</button>
+                </div>
+                <div class="pro-notice">
+                    <div class="icon">&#128275;</div>
+                    <div>
+                        <h4>Pro Feature</h4>
+                        <p>Unlock password-protected PDFs with Pro access</p>
+                    </div>
+                    <button class="btn btn-pro btn-sm" onclick="scrollToSection('pricing')">Upgrade Now</button>
+                </div>
+                <div class="upload-area" data-tool="unlock">
+                    <input type="file" id="unlock-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a password-protected PDF</p>
+                    <p class="upload-formats">Only encrypted PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <div class="options-row">
+                    <div class="option-group">
+                        <label>PDF Password</label>
+                        <input type="password" id="unlock-password" placeholder="Enter PDF password">
+                    </div>
+                </div>
+                <button class="btn btn-pro submit-btn" disabled onclick="processTool('unlock')">
+                    &#10003; Unlock PDF
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Image to PDF Panel (PRO) -->
+            <div class="tool-panel" id="image-panel">
+                <div class="panel-header">
+                    <h2>Image to PDF <span class="badge-pro" style="position:static;margin-left:10px;">PRO</span></h2>
+                    <button class="close-btn" onclick="closePanel('image')">&times;</button>
+                </div>
+                <div class="pro-notice">
+                    <div class="icon">&#128444;</div>
+                    <div>
+                        <h4>Pro Feature</h4>
+                        <p>Convert images to professional PDF documents</p>
+                    </div>
+                    <button class="btn btn-pro btn-sm" onclick="scrollToSection('pricing')">Upgrade Now</button>
+                </div>
+                <div class="upload-area" data-tool="image">
+                    <input type="file" id="image-files" accept="image/*" multiple>
+                    <div class="upload-icon">&#128444;</div>
+                    <p class="upload-text">Drop images here or <span>browse files</span></p>
+                    <p class="upload-formats">JPG, PNG, GIF, BMP, WebP supported</p>
+                </div>
+                <div class="file-list"></div>
+                <button class="btn btn-pro submit-btn" disabled onclick="processTool('image')">
+                    &#10003; Convert to PDF
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- Extract Text Panel (PRO) -->
+            <div class="tool-panel" id="extract-panel">
+                <div class="panel-header">
+                    <h2>Text Extractor <span class="badge-pro" style="position:static;margin-left:10px;">PRO</span></h2>
+                    <button class="close-btn" onclick="closePanel('extract')">&times;</button>
+                </div>
+                <div class="pro-notice">
+                    <div class="icon">&#128221;</div>
+                    <div>
+                        <h4>Pro Feature</h4>
+                        <p>Extract and copy text content from any PDF</p>
+                    </div>
+                    <button class="btn btn-pro btn-sm" onclick="scrollToSection('pricing')">Upgrade Now</button>
+                </div>
+                <div class="upload-area" data-tool="extract">
+                    <input type="file" id="extract-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to extract text</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <button class="btn btn-pro submit-btn" disabled onclick="processTool('extract')">
+                    &#10003; Extract Text
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section id="pricing">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Start free, upgrade when you need more power</p>
+            </div>
+
+            <div class="pricing-grid">
+                <!-- Free Plan -->
+                <div class="pricing-card">
+                    <div class="plan-name">Free</div>
+                    <div class="plan-price">
+                        <span class="amount">$0</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><span class="check">&#10003;</span> PDF Merger</li>
+                        <li><span class="check">&#10003;</span> PDF Splitter</li>
+                        <li><span class="check">&#10003;</span> Extract Pages</li>
+                        <li><span class="check">&#10003;</span> Remove Pages</li>
+                        <li><span class="check">&#10003;</span> PDF Rotator</li>
+                        <li><span class="check">&#10003;</span> PDF Resize</li>
+                        <li><span class="check">&#10003;</span> PDF Compressor</li>
+                        <li><span class="check">&#10003;</span> PDF Info</li>
+                        <li><span class="check">&#10003;</span> Up to 50MB files</li>
+                        <li><span class="check">&#10003;</span> 10 tasks/day</li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%;">Get Started Free</button>
+                </div>
+
+                <!-- Pro Plan -->
+                <div class="pricing-card popular">
+                    <div class="popular-badge">PRO</div>
+                    <div class="plan-name">Pro</div>
+                    <div class="plan-price">
+                        <span class="amount">$9</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><span class="check">&#10003;</span> All Free Features</li>
+                        <li><span class="check">&#10003;</span> PDF Protector <span class="pro-tag">PRO</span></li>
+                        <li><span class="check">&#10003;</span> PDF Unlocker <span class="pro-tag">PRO</span></li>
+                        <li><span class="check">&#10003;</span> Image to PDF <span class="pro-tag">PRO</span></li>
+                        <li><span class="check">&#10003;</span> Text Extractor <span class="pro-tag">PRO</span></li>
+                        <li><span class="check">&#10003;</span> Unlimited file size</li>
+                        <li><span class="check">&#10003;</span> Unlimited tasks</li>
+                        <li><span class="check">&#10003;</span> Priority support</li>
+                    </ul>
+                    <button class="btn btn-pro" style="width: 100%;">Upgrade to Pro</button>
+                </div>
+
+                <!-- Enterprise Plan -->
+                <div class="pricing-card">
+                    <div class="plan-name">Enterprise</div>
+                    <div class="plan-price">
+                        <span class="amount">$29</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <ul class="plan-features">
+                        <li><span class="check">&#10003;</span> All Pro Features</li>
+                        <li><span class="check">&#10003;</span> API Access</li>
+                        <li><span class="check">&#10003;</span> Team Collaboration</li>
+                        <li><span class="check">&#10003;</span> Custom Branding</li>
+                        <li><span class="check">&#10003;</span> Advanced Security</li>
+                        <li><span class="check">&#10003;</span> Dedicated Support</li>
+                        <li><span class="check">&#10003;</span> SLA Guarantee</li>
+                    </ul>
+                    <button class="btn btn-outline" style="width: 100%;">Contact Sales</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="features-section">
+            <div class="section-header">
+                <h2>Why Choose PDF Toolkit Pro?</h2>
+                <p>The most complete free PDF toolkit online</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="about-card">
+                    <div class="about-icon">&#128275;</div>
+                    <h3>Secure Processing</h3>
+                    <p>All files are processed locally. Your documents never leave your device.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">&#128230;</div>
+                    <h3>No Watermarks</h3>
+                    <p>Download your processed PDFs without any watermarks or restrictions.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">&#128176;</div>
+                    <h3>100% Free</h3>
+                    <p>Core PDF tools are completely free. No hidden charges or signup required.</p>
+                </div>
+                <div class="about-card">
+                    <div class="about-icon">&#128421;</div>
+                    <h3>Works Anywhere</h3>
+                    <p>Access from any device - desktop, tablet, or mobile. No software needed.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact</a>
+                <a href="#">API Documentation</a>
+            </div>
+            <p>&copy; 2024 PDF Toolkit Pro. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

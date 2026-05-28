@@ -1,0 +1,3 @@
+# Keep uploads folder but don't track files
+uploads/*
+!uploads/.gitkeep
