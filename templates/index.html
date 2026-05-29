@@ -175,6 +175,24 @@
                     </div>
                     <p>Extract text content from PDF files.</p>
                 </div>
+
+                <div class="tool-card" data-tool="word">
+                    <span class="badge-pro">PRO</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128462;</div>
+                        <h3>PDF to Word</h3>
+                    </div>
+                    <p>Convert PDF documents to editable Word (.docx) format.</p>
+                </div>
+
+                <div class="tool-card" data-tool="excel">
+                    <span class="badge-pro">PRO</span>
+                    <div class="tool-card-header">
+                        <div class="tool-icon">&#128202;</div>
+                        <h3>PDF to Excel</h3>
+                    </div>
+                    <p>Extract tables from PDF and convert to Excel (.xlsx) format.</p>
+                </div>
             </div>
 
             <!-- Tool Panels -->
@@ -552,6 +570,68 @@
                 </div>
                 <div class="result-container"></div>
             </div>
+
+            <!-- PDF to Word Panel (PRO) -->
+            <div class="tool-panel" id="word-panel">
+                <div class="panel-header">
+                    <h2>PDF to Word <span class="badge-pro" style="position:static;margin-left:10px;">PRO</span></h2>
+                    <button class="close-btn" onclick="closePanel('word')">&times;</button>
+                </div>
+                <div class="pro-notice">
+                    <div class="icon">&#128462;</div>
+                    <div>
+                        <h4>Pro Feature</h4>
+                        <p>Convert PDF documents to editable Word format</p>
+                    </div>
+                    <button class="btn btn-pro btn-sm" onclick="scrollToSection('pricing')">Upgrade Now</button>
+                </div>
+                <div class="upload-area" data-tool="word">
+                    <input type="file" id="word-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file to convert to Word</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <button class="btn btn-pro submit-btn" disabled onclick="processTool('word')">
+                    &#10003; Convert to Word
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
+
+            <!-- PDF to Excel Panel (PRO) -->
+            <div class="tool-panel" id="excel-panel">
+                <div class="panel-header">
+                    <h2>PDF to Excel <span class="badge-pro" style="position:static;margin-left:10px;">PRO</span></h2>
+                    <button class="close-btn" onclick="closePanel('excel')">&times;</button>
+                </div>
+                <div class="pro-notice">
+                    <div class="icon">&#128202;</div>
+                    <div>
+                        <h4>Pro Feature</h4>
+                        <p>Extract tables from PDF to Excel format</p>
+                    </div>
+                    <button class="btn btn-pro btn-sm" onclick="scrollToSection('pricing')">Upgrade Now</button>
+                </div>
+                <div class="upload-area" data-tool="excel">
+                    <input type="file" id="excel-files" accept=".pdf">
+                    <div class="upload-icon">&#128196;</div>
+                    <p class="upload-text">Select a PDF file with tables</p>
+                    <p class="upload-formats">Only PDF files supported</p>
+                </div>
+                <div class="file-list"></div>
+                <button class="btn btn-pro submit-btn" disabled onclick="processTool('excel')">
+                    &#10003; Convert to Excel
+                </button>
+                <div class="progress-container">
+                    <div class="progress-bar"><div class="progress-fill"></div></div>
+                    <p class="progress-text">Processing...</p>
+                </div>
+                <div class="result-container"></div>
+            </div>
         </section>
 
         <!-- Pricing Section -->
@@ -598,6 +678,8 @@
                         <li><span class="check">&#10003;</span> PDF Unlocker <span class="pro-tag">PRO</span></li>
                         <li><span class="check">&#10003;</span> Image to PDF <span class="pro-tag">PRO</span></li>
                         <li><span class="check">&#10003;</span> Text Extractor <span class="pro-tag">PRO</span></li>
+                        <li><span class="check">&#10003;</span> PDF to Word <span class="pro-tag">PRO</span></li>
+                        <li><span class="check">&#10003;</span> PDF to Excel <span class="pro-tag">PRO</span></li>
                         <li><span class="check">&#10003;</span> Unlimited file size</li>
                         <li><span class="check">&#10003;</span> Unlimited tasks</li>
                         <li><span class="check">&#10003;</span> Priority support</li>

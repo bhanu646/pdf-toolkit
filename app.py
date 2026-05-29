@@ -3,9 +3,19 @@ import uuid
 from flask import Flask, render_template, request, jsonify, send_file
 from PyPDF2 import PdfReader, PdfWriter, PdfMerger
 from PIL import Image
+import pandas as pd
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = '/tmp/pdftk_uploads'
+
+# Use /tmp for Railway, /var/folders for macOS, or user's home for local
+if os.path.exists('/tmp'):
+    UPLOAD_FOLDER = '/tmp/pdftk_uploads'
+elif os.path.exists('/var/folders'):
+    UPLOAD_FOLDER = '/var/folders/tmp/pdftk_uploads'
+else:
+    UPLOAD_FOLDER = os.path.join(os.path.expanduser('~'), 'pdftk_uploads')
+
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024
 
 os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
@@ -541,6 +551,85 @@ def extract_text():
             'total_pages': total_pages,
             'word_count': len(full_text.split()),
             'char_count': len(full_text)
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/pdf-to-word', methods=['POST'])
+def pdf_to_word():
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file provided'}), 400
+
+        file = request.files['file']
+        if not file.filename.lower().endswith('.pdf'):
+            return jsonify({'error': 'Invalid file'}), 400
+
+        input_path = os.path.join(app.config['UPLOAD_FOLDER'], f"{uuid.uuid4().hex}.pdf")
+        file.save(input_path)
+
+        output_filename = f"converted_{uuid.uuid4().hex[:8]}.docx"
+        output_path = os.path.join(app.config['UPLOAD_FOLDER'], output_filename)
+
+        from pdf2docx import Converter
+        cv = Converter(input_path)
+        cv.convert(output_path, start=0, end=None)
+        cv.close()
+
+        file_size = os.path.getsize(output_path)
+        os.remove(input_path)
+
+        return jsonify({
+            'success': True,
+            'filename': output_filename,
+            'download_url': f'/download/{output_filename}',
+            'file_size': file_size,
+            'converted': True
+        })
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+
+@app.route('/api/pdf-to-excel', methods=['POST'])
+def pdf_to_excel():
+    try:
+        if 'file' not in request.files:
+            return jsonify({'error': 'No file provided'}), 400
+
+        file = request.files['file']
+        if not file.filename.lower().endswith('.pdf'):
+            return jsonify({'error': 'Invalid file'}), 400
+
+        input_path = os.path.join(app.config['UPLOAD_FOLDER'], f"{uuid.uuid4().hex}.pdf")
+        file.save(input_path)
+
+        from camelot import read_pdf
+        tables = read_pdf(input_path, pages='all', flavor='stream')
+
+        if not tables:
+            os.remove(input_path)
+            return jsonify({'error': 'No tables found in PDF'}), 400
+
+        output_filename = f"extracted_tables_{uuid.uuid4().hex[:8]}.xlsx"
+        output_path = os.path.join(app.config['UPLOAD_FOLDER'], output_filename)
+
+        with pd.ExcelWriter(output_path, engine='openpyxl') as writer:
+            for i, table in enumerate(tables):
+                df = table.df
+                sheet_name = f'Table_{i+1}'
+                df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+        file_size = os.path.getsize(output_path)
+        os.remove(input_path)
+
+        return jsonify({
+            'success': True,
+            'filename': output_filename,
+            'download_url': f'/download/{output_filename}',
+            'file_size': file_size,
+            'tables_found': len(tables),
+            'converted': True
         })
     except Exception as e:
         return jsonify({'error': str(e)}), 500

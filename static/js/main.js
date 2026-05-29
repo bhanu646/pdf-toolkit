@@ -46,7 +46,7 @@ function closePanel(toolId) {
 }
 
 function setupAllTools() {
-    const tools = ['merge', 'split', 'extract-pages', 'remove-pages', 'rotate', 'resize', 'compress', 'info', 'protect', 'unlock', 'image', 'extract'];
+    const tools = ['merge', 'split', 'extract-pages', 'remove-pages', 'rotate', 'resize', 'compress', 'info', 'protect', 'unlock', 'image', 'extract', 'word', 'excel'];
 
     tools.forEach(toolId => {
         setupTool(toolId);
@@ -208,7 +208,9 @@ function processTool(toolId, files) {
         'protect': '/api/protect',
         'unlock': '/api/unlock',
         'image': '/api/image-to-pdf',
-        'extract': '/api/extract-text'
+        'extract': '/api/extract-text',
+        'word': '/api/pdf-to-word',
+        'excel': '/api/pdf-to-excel'
     };
 
     fetch(endpoints[toolId], {
@@ -350,6 +352,22 @@ function showResult(container, type, data, toolId) {
                 </div>
             </div>
             <p>Your pages have been removed successfully!</p>
+        `;
+    } else if (toolId === 'word' && data.converted) {
+        html += `<p>Your PDF has been converted to Word format successfully!</p>`;
+    } else if (toolId === 'excel' && data.tables_found) {
+        html += `
+            <div class="result-stats">
+                <div class="stat-item">
+                    <div class="stat-value">${data.tables_found}</div>
+                    <div class="stat-label">Tables Found</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">${formatBytes(data.file_size)}</div>
+                    <div class="stat-label">File Size</div>
+                </div>
+            </div>
+            <p>Tables extracted to Excel successfully!</p>
         `;
     } else {
         html += `<p>Your file is ready for download (${formatBytes(data.file_size || 0)})</p>`;
